@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+   
+<style>
+body {
+    margin: 0px;
+    border: 0.5vh solid black;
+}
+
+.main-menu {
+    display: grid;
+    grid-template-rows: 1.5fr 1.9fr;
+}
+
+.numbers {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.abc {
+    border: 2px solid gray;
+    text-align: center;
+    font-weight: bold;
+}
+
+.xyz1 {
+    text-align: right;
+    font-size: 3vh;
+    height: 100%;
+    width: 100%;
+    font-weight: bold;
+    font-size: 6vh;
+    border: none;
+    display: block;
+}
+
+.xyz2 {
+    text-align: right;
+    font-size: 6vh;
+}
+
+.main {
+    display: grid;
+    grid-template-rows: auto auto;
+    height: 100vh;
+}
+
+.black {
+    background-color: rgb(114, 110, 110);
+    color: white;
+}
+
+.yellow {
+    background-color: rgb(219, 231, 48);
+    color: white;
+}
+
+.btn {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 6vh;
+    border: none;
+    display: block;
+}
+
+.box1 {
+    height: 100%;
+    width: 100%;
+}
+
+.box2 {
+    height: 100%;
+    width: 100%;
+}
+</style>
+</head>
+
+
+<body>
+    <div class="main">
+        <div class="main-menu">
+            <div class="xyz1"><input type="text" id="box1" placeholder="INPUT" style="font-size:4vw;border: none;text-align: right;font-weight: bold;" /></div>
+            <div class="xyz2"><input type="text" id="box2" placeholder="RESULT" style="font-size:6vw;border: none;text-align: right;font-weight: bold;" /></div>
+        </div>
+        <div class="numbers">
+            <div class="abc">
+                <button type="button" class="btn" onclick="clearme()">C</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="negate()">+/-</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('%')">%</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn black" onclick="shownum('/')">÷</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('7')">7</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('8')">8</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('9')">9</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn black" onclick="shownum('*')">x</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('4')">4</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('5')">5</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('6')">6</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn black" onclick="shownum('-')">-</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('1')">1</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('2')">2</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('3')">3</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn black" onclick="shownum('+')">+</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('0')">0</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn"></button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn" onclick="shownum('.')">.</button>
+            </div>
+            <div class="abc">
+                <button type="button" class="btn yellow" onclick="solve()">=</button>
+            </div>
+        </div>
+    </div>
+    <script >
+function shownum(val) {
+    document.getElementById("box1").value += val;
+}
+
+function solve() {
+    try {
+        var x = document.getElementById("box1").value;
+        var y = eval(x);
+        document.getElementById("box2").value = y;
+    } catch (e) {
+        screen('Error')
+    }
+}
+
+function negate() {
+    var x = document.getElementById("box1").value;
+    var y = eval(x);
+    document.getElementById("box2").value = -1 * y;
+    document.getElementById("box1").value = y;
+}
+
+function clearme() {
+    document.getElementById("box1").value = "";
+    document.getElementById("box2").value = "";
+}
+
+function delback() {
+    var valueNeeded = document.getElementById("box1").value;
+    var finalValueNeeded = valueNeeded.substr(0, valueNeeded.length - 1);
+    document.getElementById("box1").value = finalValueNeeded;
+
+}
+</script>
+</body>
+
+</html>
